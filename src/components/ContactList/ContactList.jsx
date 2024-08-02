@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 
 
-export const ContactList = ({ contacts, deleteContact }) => {
+export const ContactList = ({ filterContact, deleteContact }) => {
+  const filteredContacts = filterContact();
     return (
-         <ul className={css.ulBox}>
-        {contacts.map(contact => (
+    <ul className={css.ulBox}>
+      {filteredContacts.map(filteredContact => (
         <ContactListItem
-          key={contact.id}
-          filteredContact={contact}
+          key={filteredContact.id}
+          filteredContact={filteredContact}
           deleteContact={deleteContact}
         />
       ))}
